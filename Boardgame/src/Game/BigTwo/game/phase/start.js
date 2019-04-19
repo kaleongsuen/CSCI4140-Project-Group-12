@@ -3,7 +3,7 @@ import setup from '../setup';
 export default {
   next: 'ready',
   allowedMoves: ['playCard', 'pass', 'sort', 'setHand'],
-  enfTurnIf: (G, ctx) =>{
+  endTurnIf: (G, ctx) =>{
     if (G.players[ctx.currentPlayer].end_game) {
       console.log("skip turn");
       return true;
