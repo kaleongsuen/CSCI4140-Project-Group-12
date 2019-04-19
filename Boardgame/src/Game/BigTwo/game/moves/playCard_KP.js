@@ -20,7 +20,7 @@ export default function (G, ctx, playerCards, combination) {
     if (newHand.isPossible) {
       if (NeedToCheck) {
         const lastHand = Hand.solve(G.history.hand, 'bigtwo');
-        win = newHand === Hand.winners([newHand, lastHand])[0];
+        win = newHand === !Hand.winners([newHand, lastHand])[0];
         sameLength = cards.length === lastHand.cards.length;
       }
 

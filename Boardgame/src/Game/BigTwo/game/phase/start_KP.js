@@ -10,8 +10,7 @@ export default {
       }
     }
   },
-  // onPhaseEnd: (_, ctx) => {
-  //   // return setup(ctx);
-  //   return false;
-  // }
+  onPhaseEnd: (_, ctx) => {
+    return setup(ctx);
+  }
 };
