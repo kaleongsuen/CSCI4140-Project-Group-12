@@ -3,7 +3,7 @@ import getAPI from '../api';
 
 export default function Home(props) {
   const [loading, setLoading] = useState(false);
-  const [numPlayers, setNumPlayers] = useState(2);
+  const [numPlayers, setNumPlayers] = useState(4);
   const [gameName, setGameName] = useState('big-two');
 
   function createNewGame() {
@@ -41,8 +41,6 @@ export default function Home(props) {
                 <td>Number of Player:</td>
                 <td>
                   <select name="numPlayers" value={numPlayers} onChange={evt => setNumPlayers(evt.target.value)}>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
                     <option value="4">4</option>
                   </select>
                 </td>

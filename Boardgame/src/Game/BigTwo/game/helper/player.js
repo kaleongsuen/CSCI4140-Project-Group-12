@@ -1,5 +1,7 @@
 const initialValue = () => ({
   ready: false,
+  rank: 0,
+  end_game: false,
   cards: []
 });
 

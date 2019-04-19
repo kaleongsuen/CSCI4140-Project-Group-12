@@ -10,6 +10,7 @@ export default function setup(ctx) {
       hand: null,
       player: ctx.currentPlayer
     },
+    rank_count: 1,
     // ctx.numPlayers incorrect in some time
     players: createPlayers(4)
   };

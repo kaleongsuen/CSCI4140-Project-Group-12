@@ -29,6 +29,18 @@ export default function (G, ctx, playerCards, combination) {
         G.history.hand = cards;
         G.history.player = ctx.currentPlayer;
 
+        if (G.players[ctx.currentPlayer].cards.length === 0) {
+          console.log("(playCard) - no cards left");
+          if(G.players[ctx.currentPlayer].end_game == false){
+            G.players[ctx.currentPlayer].end_game = true;
+            console.log("(playCard) - set end_game = true");
+            G.players[ctx.currentPlayer].rank = G.rank_count;
+            console.log("(playCard) - set rank = "+G.rank_count);
+            G.rank_count=G.rank_count+1;
+            console.log("(playCard) - set rank_count = "+G.rank_count);
+          }
+        }
+
         ctx.events.endTurn();
 
         return G;
