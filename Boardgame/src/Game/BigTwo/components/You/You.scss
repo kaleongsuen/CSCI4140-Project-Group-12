@@ -1,7 +1,17 @@
 .you {
   .card {
     cursor: pointer;
+
   }
+
+  .inturn {
+    background: green;
+  }
+
+  .notinturn {
+    background: white;
+  }
+
 
   .controls {
     transform: translateY(-100%);

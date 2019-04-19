@@ -1,21 +1,21 @@
-import React from 'react';
-import { Client } from 'boardgame.io/react';
+import React from "react";
+import { Client } from "boardgame.io/react";
 
-import Join from '../../Join';
-import BigTwo from './game';
-import BigTwoBoard from './components/BigTwoBoard/';
+import Join from "../../Join";
+import BigTwo from "./game";
+import BigTwoBoard from "./components/BigTwoBoard/";
 
-import './index.scss';
+import "./index.scss";
 
 const { REACT_APP_REMOTE_SERVER, REACT_APP_REMOTE_SERVER_PORT } = process.env;
 
 const BigTwoClient = Client({
-  debug: false,
+  debug: true,
   game: BigTwo,
   board: BigTwoBoard,
   multiplayer: {
-    server: `${REACT_APP_REMOTE_SERVER}:${REACT_APP_REMOTE_SERVER_PORT}`
-  }
+    server: `${REACT_APP_REMOTE_SERVER}:${REACT_APP_REMOTE_SERVER_PORT}`,
+  },
 });
 
 function AuthenticatedClient(props) {

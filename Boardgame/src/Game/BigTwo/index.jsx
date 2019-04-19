@@ -1,19 +1,19 @@
-import React from 'react';
-import { Client } from 'boardgame.io/react';
-import BigTwo from './game';
-import BigTwoBoard from './components/BigTwoBoard';
+import React from "react";
+import { Client } from "boardgame.io/react";
+import BigTwo from "./game";
+import BigTwoBoard from "./components/BigTwoBoard";
+import { AI } from "boardgame.io/ai";
 
-import './index.scss';
+import "./index.scss";
 
 function BigTwoLocal(props) {
   const numPlayers = Math.max(2, props.match.params.numPlayers || 4);
-  const gameID = 'gameId';
+  const gameID = "gameId";
   const PockerClient = Client({
-    debug: false,
     game: BigTwo,
     board: BigTwoBoard,
     numPlayers,
-    multiplayer: { local: true }
+    multiplayer: { local: true },
   });
 
   const client = [];

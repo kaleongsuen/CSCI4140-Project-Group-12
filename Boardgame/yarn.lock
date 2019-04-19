@@ -6807,7 +6807,7 @@ pnp-webpack-plugin@1.1.0:
 
 "pokersolver@git://github.com/Pong420/pokersolver.git":
   version "2.1.2"
-  resolved "git://github.com/Pong420/pokersolver.git#38f2e64d17c66ad160cd896bd7ee2364c7db6e47"
+  resolved "git://github.com/Pong420/pokersolver.git"
 
 pong-react-scripts@2.1.1-1:
   version "2.1.1-1"

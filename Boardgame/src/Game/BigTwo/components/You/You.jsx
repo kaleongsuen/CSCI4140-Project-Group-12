@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
-import { points, suit } from '../../game/helper/poker';
+import React, { useState, useEffect } from "react";
+import {
+  SortableContainer,
+  SortableElement,
+  arrayMove,
+} from "react-sortable-hoc";
+import { points, suit } from "../../game/helper/poker";
 
-import CardFront from '../Card/CardFront';
+import CardFront from "../Card/CardFront";
 
 export default function You(props) {
   const [combination, setCombination] = useState([]);
@@ -12,7 +16,7 @@ export default function You(props) {
     const cards = hand.slice();
     const priority = [[points, 0], [suit, 1]];
 
-    if (type === 'suit') {
+    if (type === "suit") {
       priority.reverse();
     }
 
@@ -41,19 +45,29 @@ export default function You(props) {
     if (selected) {
       combination_ = [...combination, card];
     } else {
-      combination_ = [...combination.slice(0, idx), ...combination.slice(idx + 1)];
+      combination_ = [
+        ...combination.slice(0, idx),
+        ...combination.slice(idx + 1),
+      ];
     }
 
     setCombination(combination_);
   }
 
   const SortableItem = SortableElement(({ card }) => (
-    <CardFront key={card} card={card} onClick={onClick} selected={combination.indexOf(card) !== -1} />
+    <CardFront
+      key={card}
+      card={card}
+      onClick={onClick}
+      selected={combination.indexOf(card) !== -1}
+    />
   ));
 
   const SortableList = SortableContainer(({ hand }) => {
     return (
-      <div className="cards grid-container">
+      <div
+        className={"cards grid-container " + (props.isActive ? "inturn" : "")}
+      >
         {hand.map((card, index) => (
           <SortableItem key={`item-${index}`} index={index} card={card} />
         ))}
@@ -65,18 +79,15 @@ export default function You(props) {
     setHand(arrayMove(hand, oldIndex, newIndex));
   };
 
-  useEffect(
-    () => {
-      setHand(props.cards);
-    },
-    [props.cards]
-  );
+  useEffect(() => {
+    setHand(props.cards);
+  }, [props.cards]);
 
   return (
     <div className="you">
       <div className="controls">
-        <button onClick={() => sort('points')}>Sort by Points</button>
-        <button onClick={() => sort('suit')}>Sort by Suit</button>
+        <button onClick={() => sort("points")}>Sort by Points</button>
+        <button onClick={() => sort("suit")}>Sort by Suit</button>
         <button onClick={() => props.moves.pass()} disabled={!props.isActive}>
           Pass
         </button>
