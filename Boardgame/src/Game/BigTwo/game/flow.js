@@ -8,8 +8,6 @@ export default {
   phases: {
     ready,
     draw,
-    start,
-    draw,
     start
   }
 };
