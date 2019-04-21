@@ -34,6 +34,10 @@ export default function (G, ctx, playerCards, combination) {
         if (G.players[ctx.currentPlayer].cards.length === 0) {
           console.log("(playCard) - no cards left");
           if(G.players[ctx.currentPlayer].end_game == false){
+            if(G.rank_count === 1){
+              G.last_win = ctx.currentPlayer;
+              console.log("(playCard) - set last_win = "+G.last_win);
+            }
             G.players[ctx.currentPlayer].end_game = true;
             console.log("(playCard) - set end_game = true");
             G.players[ctx.currentPlayer].rank = G.rank_count;
@@ -91,8 +95,12 @@ export default function (G, ctx, playerCards, combination) {
             console.log("(playCard) - set change_history = "+G.change_history);
           } 
         }
-
-        ctx.events.endTurn({next:ret_tmp});
+        if (G.rank_count === 4) {
+          ctx.events.endTurn({next:G.last_win});
+        }else{
+          ctx.events.endTurn({next:ret_tmp});
+        }
+        
 
         return G;
       }

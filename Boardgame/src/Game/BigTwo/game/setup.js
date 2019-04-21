@@ -10,6 +10,7 @@ export default function setup(ctx) {
       hand: null,
       player: ctx.currentPlayer
     },
+    last_win: "0",
     rank_count: 1,
     change_history: false,
     // ctx.numPlayers incorrect in some time
