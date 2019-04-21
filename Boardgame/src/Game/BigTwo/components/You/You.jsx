@@ -95,6 +95,9 @@ export default function You(props) {
           Play Cards
         </button>
       </div>
+
+      <h3>Player {props.playerID}</h3>
+      <h3>Rank: {yourRank(props.G.players[props.playerID].rank)}</h3>
       <SortableList hand={hand} onSortEnd={onSortEnd} axis="x" distance={5} />
     </div>
   );
@@ -105,4 +108,22 @@ function compare(a, b, [arr, idx]) {
   if (arr.indexOf(a[idx]) < arr.indexOf(b[idx])) return -1;
 
   return 0;
+}
+
+function yourRank(rank) {
+  console.log("ID: " + rank);
+  switch (rank) {
+    case null:
+      return "No Rank";
+    case 0:
+      return "No Rank";
+    case 1:
+      return "King";
+    case 2:
+      return "Noble";
+    case 3:
+      return "Pee";
+    case 4:
+      return "Poo";
+  }
 }
