@@ -1,7 +1,7 @@
 import setup_KP from '../setup_KP';
 
 export default {
-  next: 'ready_KP',
+  next: 'draw_KP',
   allowedMoves: ['playCard', 'pass', 'sort', 'setHand'],
   endPhaseIf: (G, ctx) => {
     if (G.rank_count === 4) {

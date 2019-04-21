@@ -13,7 +13,7 @@ export default function setup(G, ctx) {
     const new_players = {};
     for (let i = 0; i < 4; i++) {
       new_players[i] = {
-            ready: false,
+            ready: true,
             rank: old_players[i].rank !== 0 ? old_players[i].rank : 4,
             end_game: false,
             cards: []
