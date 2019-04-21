@@ -1,4 +1,5 @@
 import setup from '../setup';
+import draw_KP from './draw_KP';
 
 export default {
 

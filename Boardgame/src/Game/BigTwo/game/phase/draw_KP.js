@@ -2,6 +2,8 @@ export default {
   allowedMoves: [],
   next: 'start_KP',
   onPhaseBegin(G, ctx) {
+    console.log("In draw_KP");
+
     const poker = ctx.random.Shuffle(G.secret.poker).slice(0, ctx.numPlayers * 13);
 
     //Pop all old cards in hand

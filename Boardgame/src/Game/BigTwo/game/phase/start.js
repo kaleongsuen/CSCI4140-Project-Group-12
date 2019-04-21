@@ -2,7 +2,7 @@ import setup from '../setup';
 import draw_KP from './draw_KP';
 
 export default {
-  next: 'ready',
+  next: 'draw_KP',
   allowedMoves: ['playCard', 'pass', 'sort', 'setHand'],
 
   // onTurnEnd: (G, ctx) =>({next:'3'}),
