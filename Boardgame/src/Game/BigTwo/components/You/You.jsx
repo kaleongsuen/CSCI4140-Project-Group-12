@@ -8,6 +8,12 @@ import { points, suit } from "../../game/helper/poker";
 
 import CardFront from "../Card/CardFront";
 
+import king from "../icon/king.png";
+import noble from "../icon/noble.png";
+import pee from "../icon/pee.png";
+import poo from "../icon/poo.png";
+import nullIcon from "../icon/null.png";
+
 export default function You(props) {
   const [combination, setCombination] = useState([]);
   const [hand, setHand] = useState(props.cards);
@@ -86,6 +92,11 @@ export default function You(props) {
   return (
     <div className="you">
       <div className="controls">
+        <span className="icon">
+          {yourRank(props.G.players[props.playerID].rank)} Player{" "}
+          {props.playerID}
+        </span>
+
         <button onClick={() => sort("points")}>Sort by Points</button>
         <button onClick={() => sort("suit")}>Sort by Suit</button>
         <button onClick={() => props.moves.pass()} disabled={!props.isActive}>
@@ -95,11 +106,6 @@ export default function You(props) {
           Play Cards
         </button>
       </div>
-
-      <h3>
-        Player {props.playerID} Rank:{" "}
-        {yourRank(props.G.players[props.playerID].rank)}
-      </h3>
 
       <SortableList hand={hand} onSortEnd={onSortEnd} axis="x" distance={5} />
     </div>
@@ -119,14 +125,16 @@ function yourRank(rank) {
     case null:
       return "No Rank";
     case 0:
-      return "No Rank";
+      return (
+        <img style={{ width: 30, height: 30 }} src={nullIcon} alt="Logo" />
+      );
     case 1:
-      return "King";
+      return <img style={{ width: 30, height: 30 }} src={king} alt="Logo" />;
     case 2:
-      return "Noble";
+      return <img style={{ width: 30, height: 30 }} src={noble} alt="Logo" />;
     case 3:
-      return "Pee";
+      return <img style={{ width: 30, height: 30 }} src={pee} alt="Logo" />;
     case 4:
-      return "Poo";
+      return <img style={{ width: 30, height: 30 }} src={poo} alt="Logo" />;
   }
 }
