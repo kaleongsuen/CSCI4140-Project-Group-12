@@ -1,7 +1,9 @@
 import ready from './phase/ready';
+import ready_KP from './phase/ready_KP';
 import draw from './phase/draw';
-import start from './phase/start';
 import draw_KP from "./phase/draw_KP";
+import start from './phase/start';
+import start_KP from './phase/start_KP';
 
 
 export default {
@@ -9,9 +11,10 @@ export default {
 
   phases: {
     ready,
+    ready_KP,
     draw,
-    start,
     draw_KP,
-    start
+    start,
+    start_KP
   }
 };

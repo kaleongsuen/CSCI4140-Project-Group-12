@@ -13,7 +13,7 @@ export default function BigTwoBoard(props) {
     <div className="disconnected">Connecting ...</div>
   ) : (
     <div className={`big-two-board ${phase}`}>
-      {phase === "ready" ? (
+      {phase === "ready" || phase === "ready_KP" ? (
         !player.ready ? (
           <button onClick={() => props.moves.ready(props.playerID)}>
             Ready

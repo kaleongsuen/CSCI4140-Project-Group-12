@@ -1,7 +1,7 @@
 import { TurnOrder } from 'boardgame.io/core';
 
 export default {
-  next: 'draw',
+  next: 'draw_KP',
   allowedMoves: ['ready'],
   turnOrder: TurnOrder.ANY,
   endPhaseIf: (G, ctx) => {
