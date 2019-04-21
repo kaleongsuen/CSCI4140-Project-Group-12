@@ -27,6 +27,7 @@ export default function setup(G, ctx) {
         hand: null,
         player: ctx.currentPlayer
       },
+      reverse: false,
       last_win: G.last_win,
       rank_count: 1,
       change_history: false,
@@ -42,7 +43,8 @@ export default function setup(G, ctx) {
         hand: null,
         player: ctx.currentPlayer
       },
-      last_win: "0",
+      reverse: false,
+      last_win: "-1",
       rank_count: 1,
       change_history: false,
       // ctx.numPlayers incorrect in some time

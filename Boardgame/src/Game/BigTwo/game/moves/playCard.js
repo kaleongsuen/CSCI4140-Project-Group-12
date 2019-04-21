@@ -22,7 +22,11 @@ export default function (G, ctx, playerCards, combination) {
     if (newHand.isPossible) {
       if (NeedToCheck) {
         const lastHand = Hand.solve(G.history.hand, 'bigtwo');
-        win = newHand === Hand.winners([newHand, lastHand])[0];
+        if(G.reverse){
+          win = newHand !== Hand.winners([newHand, lastHand])[0];
+        }else{
+          win = newHand === Hand.winners([newHand, lastHand])[0];
+        }
         sameLength = cards.length === lastHand.cards.length;
       }
 
@@ -35,6 +39,9 @@ export default function (G, ctx, playerCards, combination) {
           console.log("(playCard) - no cards left");
           if(G.players[ctx.currentPlayer].end_game == false){
             if(G.rank_count === 1){
+              if(G.last_win !== ctx.currentPlayer && G.last_win !== "-1"){
+                G.reverse = true;
+              }
               G.last_win = ctx.currentPlayer;
               console.log("(playCard) - set last_win = "+G.last_win);
             }
