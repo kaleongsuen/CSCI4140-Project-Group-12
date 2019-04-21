@@ -1,6 +1,6 @@
 export default {
   allowedMoves: [],
-  next: 'start',
+  next: 'start_KP',
   onPhaseBegin(G, ctx) {
     const poker = ctx.random.Shuffle(G.secret.poker).slice(0, ctx.numPlayers * 13);
 
