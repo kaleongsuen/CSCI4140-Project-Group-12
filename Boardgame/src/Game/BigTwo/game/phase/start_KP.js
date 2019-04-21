@@ -1,5 +1,6 @@
 import setup from '../setup';
 import draw_KP from './draw_KP';
+import setup_KP from "../setup_KP";
 
 export default {
 
@@ -9,7 +10,7 @@ export default {
       return true;
     }
   },
-  onPhaseEnd: (_, ctx) => {
-    return draw_KP;
+  onPhaseEnd: (G, ctx) => {
+    return setup_KP(G, ctx);
   }
 };
