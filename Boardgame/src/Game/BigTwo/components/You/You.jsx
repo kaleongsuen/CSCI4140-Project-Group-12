@@ -96,8 +96,11 @@ export default function You(props) {
         </button>
       </div>
 
-      <h3>Player {props.playerID}</h3>
-      <h3>Rank: {yourRank(props.G.players[props.playerID].rank)}</h3>
+      <h3>
+        Player {props.playerID} Rank:{" "}
+        {yourRank(props.G.players[props.playerID].rank)}
+      </h3>
+
       <SortableList hand={hand} onSortEnd={onSortEnd} axis="x" distance={5} />
     </div>
   );

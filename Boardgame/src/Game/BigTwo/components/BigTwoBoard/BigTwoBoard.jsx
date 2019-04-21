@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import You from '../You';
-import Center from '../Center';
-import OtherPlayers from '../OtherPlayers';
+import You from "../You";
+import Center from "../Center";
+import OtherPlayers from "../OtherPlayers";
 
 export default function BigTwoBoard(props) {
   const { phase } = props.ctx;
@@ -13,16 +13,18 @@ export default function BigTwoBoard(props) {
     <div className="disconnected">Connecting ...</div>
   ) : (
     <div className={`big-two-board ${phase}`}>
-      {phase === 'ready' ? (
+      {phase === "ready" ? (
         !player.ready ? (
-          <button onClick={() => props.moves.ready(props.playerID)}>Ready</button>
+          <button onClick={() => props.moves.ready(props.playerID)}>
+            Ready
+          </button>
         ) : (
           <div>
-            Waiting for Player{' '}
+            Waiting for Player{" "}
             {otherPlayers
               .filter(({ ready }) => !ready)
               .map(({ id }) => id)
-              .join(',')}
+              .join(",")}
           </div>
         )
       ) : (
