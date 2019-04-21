@@ -1,4 +1,6 @@
-import { Game } from 'boardgame.io/core';
+import {
+  Game
+} from 'boardgame.io/core';
 
 import setup from './setup';
 import flow from './flow';

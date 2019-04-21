@@ -1,4 +1,5 @@
 import setup from '../setup';
+import draw_KP from './draw_KP';
 
 export default {
   next: 'ready',
@@ -47,12 +48,12 @@ export default {
   //   // console.log(ctx.currentPlayer);
   // },
   endPhaseIf: (G, ctx) => {
-    if(G.rank_count===4){
+    if (G.rank_count === 4) {
       return true;
     }
   },
-  onPhaseEnd: (_, ctx) => {
-    return setup(ctx);
+  onPhaseEnd: (G, ctx) => {
+    return draw_KP;
     // return false;
   }
 };
