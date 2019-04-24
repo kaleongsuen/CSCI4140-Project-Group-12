@@ -14,7 +14,7 @@ export default function setup(G, ctx) {
     for (let i = 0; i < 4; i++) {
       new_players[i] = {
             ready: true,
-            rank: old_players[i].rank !== 0 ? old_players[i].rank : 4,
+            rank: old_players[i].rank,
             end_game: false,
             cards: []
           };
