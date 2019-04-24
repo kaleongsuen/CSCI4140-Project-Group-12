@@ -10,7 +10,7 @@ import "./index.scss";
 const { REACT_APP_REMOTE_SERVER, REACT_APP_REMOTE_SERVER_PORT } = process.env;
 
 const BigTwoClient = Client({
-  debug: true,
+  debug: false,
   game: BigTwo,
   board: BigTwoBoard,
   multiplayer: {
