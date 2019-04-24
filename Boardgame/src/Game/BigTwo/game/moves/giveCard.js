@@ -11,6 +11,11 @@ export default function (G, ctx, playerCards, combination) {
     const newHand = Hand.solve(combination, 'bigtwo');
     const cards = newHand.toArray(true);
     const playerCardsRemain = pullAll(playerCards.slice(), cards);
+    
+    console.log("combination: "+ combination);
+    console.log("cards: "+ cards);
+    console.log("playerCardsRemain: "+ playerCardsRemain);
+    
     const playerRank = G.players[ctx.currentPlayer].rank;
 
     let validExchange = true;
@@ -19,8 +24,7 @@ export default function (G, ctx, playerCards, combination) {
       if(cards.length !== 2){
         console.log('King need to give two cards to Poo', cards);
         validExchange = false;
-      }
-      if(validExchange){
+      }else{
         G.players[G.win_order[3]].cards.push(...combination);
       }
 
@@ -28,8 +32,7 @@ export default function (G, ctx, playerCards, combination) {
       if(cards.length !== 1){
         console.log('Noble need to give one card to Pee', cards);
         validExchange = false;
-      }
-      if(validExchange){
+      }else{
         G.players[G.win_order[2]].cards.push(...combination);
       }
       
@@ -37,10 +40,9 @@ export default function (G, ctx, playerCards, combination) {
       if(cards.length !== 1){
         console.log('Pee need to give one card to Noble', cards);
         validExchange = false;
-      }
-      if(validExchange){
+      }else{
         for(let card in playerCardsRemain){
-          if(newHand !== Hand.winners([newHand, Hand.solve(card, 'bigtwo')])[0]){
+          if(newHand !== Hand.winners([newHand, Hand.solve([card], 'bigtwo')])[0]){
             console.log('Pee need to give largest card to Noble', cards);
             validExchange = false;
             break;
@@ -55,24 +57,23 @@ export default function (G, ctx, playerCards, combination) {
       if(cards.length !== 2){
         console.log('Poo need to give two cards to King', cards);
         validExchange = false;
-      }
-      let card0 = Hand.solve(combination[0], 'bigtwo');
-      let card1 = Hand.solve(combination[1], 'bigtwo');
-      if(validExchange){
+      }else{
+        let card0 = Hand.solve([combination[0]], 'bigtwo');
+        let card1 = Hand.solve([combination[1]], 'bigtwo');
         for(let card in playerCardsRemain){
-          if(card0 !== Hand.winners([card0, Hand.solve(card, 'bigtwo')])[0]){
-            console.log('Poo need to give two largest cards to King', cards);
+          if(card0 !== Hand.winners([card0, Hand.solve([card], 'bigtwo')])[0]){
+            console.log('Poo need to give two largest cards to King 0', cards);
             validExchange = false;
             break;
           }
         }
-      }
-      if(validExchange){
-        for(let card in playerCardsRemain){
-          if(card1 !== Hand.winners([card1, Hand.solve(card, 'bigtwo')])[0]){
-            console.log('Poo need to give two largest cards to King', cards);
-            validExchange = false;
-            break;
+        if(validExchange){
+          for(let card in playerCardsRemain){
+            if(card1 !== Hand.winners([card1, Hand.solve([card], 'bigtwo')])[0]){
+              console.log('Poo need to give two largest cards to King 1', cards);
+              validExchange = false;
+              break;
+            }
           }
         }
       }
@@ -88,7 +89,7 @@ export default function (G, ctx, playerCards, combination) {
       if(playerRank === 4){
         ctx.events.endTurn({next: G.last_win});
       }else{
-        ctx.events.endTurn();
+        ctx.events.endTurn({next: G.exchangeOrder[G.exchanged]});
       }
       return G;
     }

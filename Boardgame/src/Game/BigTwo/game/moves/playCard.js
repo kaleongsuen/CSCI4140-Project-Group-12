@@ -107,14 +107,13 @@ export default function (G, ctx, playerCards, combination) {
             console.log("(playCard) - set change_history = "+G.change_history);
           } 
         }
+
         if (G.rank_count === 4) {
           G.win_order.push(ret_tmp);
           console.log("(playCard) - set win_order = "+G.win_order);
-          ctx.events.endTurn({next:G.last_win});
-        }else{
-          ctx.events.endTurn({next:ret_tmp});
         }
         
+        ctx.events.endTurn({next:ret_tmp});
 
         return G;
       }
