@@ -42,10 +42,11 @@ export default function (G, ctx, playerCards, combination) {
         validExchange = false;
       }else{
         for(let card in playerCardsRemain){
-          let win = Hand.winners([newHand, Hand.solve([card], 'bigtwo')])[0];
+          let solved_card = Hand.solve([playerCardsRemain[card]], 'bigtwo');
+          let win = Hand.winners([newHand, solved_card)[0];
           if(newHand !== win){
             console.log('Pee need to give largest card to Noble');
-            console.log(newHand + ' vs ' + card + ', winner: ' + win)
+            console.log(newHand + ' vs ' + solved_card + ', winner: ' + win)
             validExchange = false;
             break;
           }
@@ -62,18 +63,22 @@ export default function (G, ctx, playerCards, combination) {
       }else{
         let card0 = Hand.solve([combination[0]], 'bigtwo');
         let card1 = Hand.solve([combination[1]], 'bigtwo');
+        // console.log("playerCardsRemain: "+playerCardsRemain);
         for(let card in playerCardsRemain){
-          let win0 = Hand.winners([card0, Hand.solve([card], 'bigtwo')])[0];
-          let win1 = Hand.winners([card1, Hand.solve([card], 'bigtwo')])[0];
+          let solved_card = Hand.solve([playerCardsRemain[card]], 'bigtwo');
+          // console.log("solved_card: "+ solved_card);
+
+          let win0 = Hand.winners([card0, solved_card])[0];
+          let win1 = Hand.winners([card1, solved_card])[0];
           if(card0 !== win0){
             console.log('Poo need to give two largest cards to King - 0');
-            console.log(card0 + ' vs ' + card + ', winner: ' + win0)
+            console.log(card0 + ' vs ' + solved_card + ', winner: ' + win0)
             validExchange = false;
             break;
           }
           if(card1 !== win1){
             console.log('Poo need to give two largest cards to King - 1');
-            console.log(card1 + ' vs ' + card + ', winner: ' + win1)
+            console.log(card1 + ' vs ' + solved_card + ', winner: ' + win1)
             validExchange = false;
             break;
           }
@@ -88,9 +93,11 @@ export default function (G, ctx, playerCards, combination) {
     if(validExchange){
       G.players[ctx.currentPlayer].cards = playerCardsRemain;
       G.exchanged = G.exchanged + 1;
-      if(playerRank === 4){
+      if(G.exchanged === 4){
+        console.log("end exchange, next: "+G.last_win);
         ctx.events.endTurn({next: G.last_win});
       }else{
+        console.log("exchanging, next: "+G.exchangeOrder[G.exchanged]);
         ctx.events.endTurn({next: G.exchangeOrder[G.exchanged]});
       }
       return G;
