@@ -94,6 +94,8 @@ export default function (G, ctx, playerCards, combination) {
       G.players[ctx.currentPlayer].cards = playerCardsRemain;
       G.exchanged = G.exchanged + 1;
       if(G.exchanged === 4){
+        G.history.player = G.last_win;
+        console.log("(exchange) - set history.player = "+G.history.player);
         console.log("end exchange, next: "+G.last_win);
         ctx.events.endTurn({next: G.last_win});
       }else{
