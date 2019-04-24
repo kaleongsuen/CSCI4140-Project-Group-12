@@ -15,6 +15,7 @@ import poo from "../icon/poo.png";
 import nullIcon from "../icon/null.png";
 
 export default function You(props) {
+  const { phase } = props.ctx;
   const [combination, setCombination] = useState([]);
   const [hand, setHand] = useState(props.cards);
 
@@ -40,6 +41,12 @@ export default function You(props) {
 
   function playCard() {
     props.moves.playCard(hand, combination);
+    setCombination([]);
+  }
+
+
+  function giveCard() {
+    props.moves.giveCard(hand, combination);
     setCombination([]);
   }
 
@@ -99,12 +106,16 @@ export default function You(props) {
 
         <button onClick={() => sort("points")}>Sort by Points</button>
         <button onClick={() => sort("suit")}>Sort by Suit</button>
-        <button onClick={() => props.moves.pass()} disabled={!props.isActive}>
+        <button onClick={() => props.moves.pass()} disabled={!props.isActive || phase === "exchange"}>
           Pass
         </button>
-        <button onClick={() => playCard()} disabled={!props.isActive}>
+        <button onClick={() => playCard()} disabled={!props.isActive || phase === "exchange"}>
           Play Cards
         </button>
+        <button onClick={() => giveCard()} disabled={!props.isActive || phase !== "exchange"}>
+          Give Cards
+        </button>
+
       </div>
 
       <SortableList hand={hand} onSortEnd={onSortEnd} axis="x" distance={5} />

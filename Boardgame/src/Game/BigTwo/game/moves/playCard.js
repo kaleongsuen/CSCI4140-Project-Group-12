@@ -45,6 +45,11 @@ export default function (G, ctx, playerCards, combination) {
               G.last_win = ctx.currentPlayer;
               console.log("(playCard) - set last_win = "+G.last_win);
             }
+            if(G.win_order.length == 4){
+              G.win_order = [];
+            }
+            G.win_order.push(ctx.currentPlayer);
+            console.log("(playCard) - set win_order = "+G.win_order);
             G.players[ctx.currentPlayer].end_game = true;
             console.log("(playCard) - set end_game = true");
             G.players[ctx.currentPlayer].rank = G.rank_count;
@@ -103,6 +108,8 @@ export default function (G, ctx, playerCards, combination) {
           } 
         }
         if (G.rank_count === 4) {
+          G.win_order.push(ret_tmp);
+          console.log("(playCard) - set win_order = "+G.win_order);
           ctx.events.endTurn({next:G.last_win});
         }else{
           ctx.events.endTurn({next:ret_tmp});

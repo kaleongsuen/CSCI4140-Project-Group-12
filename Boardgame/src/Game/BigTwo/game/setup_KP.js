@@ -19,6 +19,12 @@ export default function setup(G, ctx) {
             cards: []
           };
     }
+
+    let exchange_order = [];
+    for(let i = 0; i < 4; i++){
+      exchange_order[i] = G.win_order[3-i]
+    }
+
     return {
       secret: {
         poker
@@ -30,6 +36,9 @@ export default function setup(G, ctx) {
       reverse: false,
       last_win: G.last_win,
       rank_count: 1,
+      win_order: G.win_order,
+      exchanged: 0,
+      exchangeOrder: exchange_order,
       change_history: false,
       // ctx.numPlayers incorrect in some time
       players: new_players
@@ -46,6 +55,9 @@ export default function setup(G, ctx) {
       reverse: false,
       last_win: "-1",
       rank_count: 1,
+      win_order: [],
+      exchanged: 0,
+      exchangeOrder: [],
       change_history: false,
       // ctx.numPlayers incorrect in some time
       players: createPlayers(4)

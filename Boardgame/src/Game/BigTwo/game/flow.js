@@ -4,6 +4,7 @@ import draw from './phase/draw';
 import draw_KP from "./phase/draw_KP";
 import start from './phase/start';
 import start_KP from './phase/start_KP';
+import exchange from './phase/exchange';
 
 
 export default {
@@ -15,6 +16,7 @@ export default {
     draw,
     draw_KP,
     start,
-    start_KP
+    start_KP,
+    exchange
   }
 };

@@ -12,6 +12,9 @@ export default function setup(ctx) {
     },
     reverse: false,
     last_win: "-1",
+    win_order: [],
+    exchanged: 0,
+    exchangeOrder: [],
     rank_count: 1,
     change_history: false,
     // ctx.numPlayers incorrect in some time
