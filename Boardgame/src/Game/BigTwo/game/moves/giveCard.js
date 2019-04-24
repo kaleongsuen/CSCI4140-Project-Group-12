@@ -42,8 +42,10 @@ export default function (G, ctx, playerCards, combination) {
         validExchange = false;
       }else{
         for(let card in playerCardsRemain){
-          if(newHand !== Hand.winners([newHand, Hand.solve([card], 'bigtwo')])[0]){
-            console.log('Pee need to give largest card to Noble', cards);
+          let win = Hand.winners([newHand, Hand.solve([card], 'bigtwo')])[0];
+          if(newHand !== win){
+            console.log('Pee need to give largest card to Noble');
+            console.log(newHand + ' vs ' + card + ', winner: ' + win)
             validExchange = false;
             break;
           }
@@ -61,19 +63,19 @@ export default function (G, ctx, playerCards, combination) {
         let card0 = Hand.solve([combination[0]], 'bigtwo');
         let card1 = Hand.solve([combination[1]], 'bigtwo');
         for(let card in playerCardsRemain){
-          if(card0 !== Hand.winners([card0, Hand.solve([card], 'bigtwo')])[0]){
-            console.log('Poo need to give two largest cards to King 0', cards);
+          let win0 = Hand.winners([card0, Hand.solve([card], 'bigtwo')])[0];
+          let win1 = Hand.winners([card1, Hand.solve([card], 'bigtwo')])[0];
+          if(card0 !== win0){
+            console.log('Poo need to give two largest cards to King - 0');
+            console.log(card0 + ' vs ' + card + ', winner: ' + win0)
             validExchange = false;
             break;
           }
-        }
-        if(validExchange){
-          for(let card in playerCardsRemain){
-            if(card1 !== Hand.winners([card1, Hand.solve([card], 'bigtwo')])[0]){
-              console.log('Poo need to give two largest cards to King 1', cards);
-              validExchange = false;
-              break;
-            }
+          if(card1 !== win1){
+            console.log('Poo need to give two largest cards to King - 1');
+            console.log(card1 + ' vs ' + card + ', winner: ' + win1)
+            validExchange = false;
+            break;
           }
         }
       }
