@@ -43,7 +43,7 @@ export default function (G, ctx, playerCards, combination) {
       }else{
         for(let card in playerCardsRemain){
           let solved_card = Hand.solve([playerCardsRemain[card]], 'bigtwo');
-          let win = Hand.winners([newHand, solved_card)[0];
+          let win = Hand.winners([newHand, solved_card])[0];
           if(newHand !== win){
             console.log('Pee need to give largest card to Noble');
             console.log(newHand + ' vs ' + solved_card + ', winner: ' + win)
