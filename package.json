@@ -21,7 +21,7 @@
     "url-join": "^4.0.0"
   },
   "scripts": {
-    "start": "yarn start",
+    "start": "yarn start & yarn server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
