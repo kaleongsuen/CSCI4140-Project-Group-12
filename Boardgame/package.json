@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "10.12.0"
+    "node": "10.12.0",
+    "yarn": "0.23.2"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -16,7 +17,7 @@
     "lodash": "^4.17.11",
     "mongodb": "^3.1.10",
     "nodemon": "^1.18.9",
-    "pokersolver": "git://github.com/Pong420/pokersolver.git",
+    "pokersolver": "git://github.com/Pong420/pokersolver.git#48d321c4c4faf47d96886a625a7130db2b3037e8",
     "pong-react-scripts": "2.1.1-1",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
