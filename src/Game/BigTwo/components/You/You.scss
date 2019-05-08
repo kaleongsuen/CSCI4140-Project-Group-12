@@ -1,0 +1,33 @@
+.you {
+  .card {
+    cursor: pointer;
+
+  }
+
+  .inturn {
+    background: green;
+  }
+
+  .notinturn {
+    background: white;
+  }
+
+
+  .controls {
+    transform: translateY(-100%);
+    position: absolute;
+    right: 0%;
+    z-index: 10;
+
+    .icon {
+      transform: translateY(-100%);
+      position: absolute;
+      right: 0%;
+      z-index: 10;
+    }
+
+    button {
+      margin: 0 3px;
+    }
+  }
+}

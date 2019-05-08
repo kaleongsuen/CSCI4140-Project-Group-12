@@ -1,0 +1,35 @@
+.center {
+  align-items: center;
+
+
+
+  .last-hand {
+    display: flex;
+    justify-content: center;
+    perspective: 300px;
+    opacity: 1 !important;
+
+    .card {
+      @include card-size(100px);
+
+      transform: rotateX(30deg);
+    }
+  }
+
+  .message {
+    text-align: center;
+  }
+}
+
+.reverse {
+  width: 100%;
+  max-width: 100%;
+
+  background: url("../reverse.jpeg") no-repeat center;
+  // opacity: 0.4;
+
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+}
