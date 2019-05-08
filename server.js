@@ -14,7 +14,7 @@ try {
 } catch (e) {}
 
 const { $PORT, MONGODB_URI, REACT_APP_REMOTE_SERVER_PORT } = process.env;
-const PORT = Number($PORT || process.env.PORT);
+const PORT = Number($PORT || REACT_APP_REMOTE_SERVER_PORT);
 
 const serverConifg = {
   games: [BigTwo]
